@@ -3,7 +3,7 @@ import Graph from 'react-graph-vis'
 import { connect, useSelector } from 'react-redux'
 import { updateGraph, updatePatients, selectPatient } from '../Redux/actions'
 
-import { rowsToGraph, letterToCode } from '../../util/parse'
+import { rowsToGraph, letterToCode, jsonToGraph } from '../../util/parse'
 import normalize from '../../util/normalize'
 import DatePicker from '../DatePicker'
 
@@ -24,17 +24,26 @@ const NetworkMap = ({
   }))
 
   useEffect(() => {
-    fetch('https://api.rootnet.in/covid19-in/unofficial/covid19india.org', {
-      cors: 'no-cors',
-      method: 'GET',
-      redirect: 'follow',
-    })
+    fetch('aa.json')
       .then(resp => resp.json())
       .then(res => {
-        updateGraph(rowsToGraph(res.data.rawPatientData))
-        updatePatients(normalize(res.data.rawPatientData))
+        // console.log(res)
+        updateGraph(jsonToGraph(res.nodes, res.edges))
+        updatePatients(normalize(res.nodes))
         setIsLoading(false)
       })
+    // fetch('https://api.rootnet.in/covid19-in/unofficial/covid19india.org', {
+    //   cors: 'no-cors',
+    //   method: 'GET',
+    //   redirect: 'follow',
+    // })
+    //   .then(resp => resp.json())
+    //   .then(res => {
+    //     console.log(res)
+    //     updateGraph(rowsToGraph(res.data.rawPatientData))
+    //     updatePatients(normalize(res.data.rawPatientData))
+    //     setIsLoading(false)
+    //   })
       .catch(err => console.log('error', err))
   }, [isLoading])
 
@@ -92,12 +101,12 @@ const NetworkMap = ({
       const selectedNode = graph.nodes.find(v => v.id === selectedNodeId)
       if (selectedNode) {
         switch (selectedNode.group) {
-          case 'patient':
+          case 'Person':
+          case 'Location':
             // As per the vis.js API, event.pointer.canvas points to the selected node within the canvas
             // which in our case is the patient. Inject this into the update logic.
             selectPatient({ id: selectedNode.id, coords: event.pointer.canvas })
             break
-          case 'city':
           default:
         }
       }

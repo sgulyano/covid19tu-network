@@ -9,7 +9,7 @@ import actionTypes from './actionTypes'
 
 // Setup initial state with an fleet info object.
 const initialState = {
-  filter: 'P2P',
+  filter: 'Places',
   selected: null,
   graph: null,
   patients: null,
@@ -33,7 +33,7 @@ export default (state = initialState, action) => {
     }
     case actionTypes.UPDATE_PATIENTS: {
       const { patients } = action.payload
-      return { ...state, patients: patients, patient: patients.byId[251] } // `P1` in code
+      return { ...state, patients: patients, patient: patients.byId[0] } // `P1` in code
     }
     case actionTypes.SELECT_PATIENT: {
       const { id, coords } = action.payload

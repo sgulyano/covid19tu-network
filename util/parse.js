@@ -60,15 +60,52 @@ import {
   male_hosp,
   male_cured,
   male_dead,
+  male_pui,
+  male_highrisk,
+  male_lowrisk,
+  male_healthy,
+  city_node,
   female_cured,
   female_hosp,
   female_dead,
+  female_pui,
+  female_lowrisk,
+  female_highrisk,
+  female_healthy,
 } from '../images/index'
 import dotProp from 'dot-prop-immutable'
 
 export function letterToCode(str) {
   const letterPos = parseInt(str[0], 36)
   return parseInt(letterPos.toString() + str.substring(1))
+}
+
+export function getIcon_json(patient) {
+  if (typeof patient.sex !== 'undefined' && patient.sex.charAt(0)=='\u0e0a') {
+    if (patient.level === 'PUI') {
+      return male_pui
+    } else if (patient.level === 'HighRisk') {
+      return male_highrisk
+    } else if (patient.level === 'LowRisk') {
+      return male_lowrisk
+    } else if (patient.level === 'Healthy') {
+      return male_healthy
+    } else {
+      return city_node
+    }
+  } else {
+    if (patient.level === 'PUI') {
+      return female_pui
+    } else if (patient.level === 'HighRisk') {
+      return female_highrisk
+    } else if (patient.level === 'LowRisk') {
+      return female_lowrisk
+    } else if (patient.level === 'Healthy') {
+      return female_healthy
+    } else {
+      return city_node
+    }
+  }
 }
 
 export function getIcon(patient) {
@@ -132,6 +169,46 @@ export const rowsToGraph = rows => {
 
       graph = dotProp.set(graph, 'edges', list => [...list, edge])
     }
+  })
+  return graph
+}
+
+export const jsonToGraph = (nodes, edges) => {
+  let graph = {
+    nodes: [],
+    edges: [],
+  }
+
+  nodes.forEach(row => {
+    let node = {
+      id: row.id,
+      label: row.label,
+      shape: 'image',
+      image: getIcon_json(row),
+      group: row.group,
+      level: row.level,
+      sex: row.sex,
+      age: row.age,
+      tel: row.tel,
+      email: row.email,
+      addr: row.addr,
+      job: row.job,
+      dep: row.dep
+    }
+
+    graph = dotProp.set(graph, 'nodes', list => [...list, node])
+  })
+
+  edges.forEach(row => {
+    let edge = {
+      from: row.from,
+      to: row.to,
+      label: row.label,
+      start: row.start,
+      end: row.end
+    }
+
+    graph = dotProp.set(graph, 'edges', list => [...list, edge])
   })
   return graph
 }

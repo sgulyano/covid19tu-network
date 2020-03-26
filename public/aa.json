@@ -1,0 +1,207 @@
+{
+    "nodes": [
+        {
+            "id": 75,
+            "label": "\u0e41\u0e1b\u0e49\u0e19",
+            "group": "Person",
+            "level": "LowRisk"
+        },
+        {
+            "id": 86,
+            "label": "Kitchen Cath",
+            "group": "Location",
+            "level": null
+        },
+        {
+            "id": 88,
+            "label": "AI Lab",
+            "group": "Location",
+            "level": null
+        },
+        {
+            "id": 89,
+            "label": "Lazy Fat Cat",
+            "group": "Location",
+            "level": null
+        },
+        {
+            "id": 76,
+            "label": "\u0e41\u0e2d\u0e19",
+            "group": "Person",
+            "level": "LowRisk"
+        },
+        {
+            "id": 87,
+            "label": "Airport",
+            "group": "Location",
+            "level": null
+        },
+        {
+            "id": 77,
+            "label": "\u0e1b\u0e49\u0e2d\u0e07",
+            "group": "Person",
+            "level": "HighRisk"
+        },
+        {
+            "id": 80,
+            "label": "\u0e21\u0e14",
+            "group": "Person",
+            "level": "HighRisk"
+        },
+        {
+            "id": 85,
+            "label": "TU",
+            "group": "Location",
+            "level": null
+        },
+        {
+            "id": 78,
+            "label": "\u0e40\u0e14\u0e22\u0e4c",
+            "group": "Person",
+            "level": "LowRisk"
+        },
+        {
+            "id": 79,
+            "label": "\u0e19\u0e49\u0e33",
+            "group": "Person",
+            "level": "Healthy"
+        },
+        {
+            "id": 81,
+            "label": "\u0e21\u0e38\u0e49\u0e22",
+            "group": "Person",
+            "level": "HighRisk"
+        },
+        {
+            "id": 84,
+            "label": "\u0e42\u0e22",
+            "group": "Person",
+            "level": "PUI"
+        },
+        {
+            "id": 82,
+            "label": "\u0e41\u0e2d\u0e21",
+            "group": "Person",
+            "level": "Healthy"
+        },
+        {
+            "id": 83,
+            "label": "\u0e42\u0e15\u0e49\u0e07",
+            "group": "Person",
+            "level": "Healthy"
+        }
+    ],
+    "edges": [
+        {
+            "from": 75,
+            "to": 86,
+            "label": "WENT_TO",
+            "start": "2020-03-09 00:00:00",
+            "end": "2020-03-10 00:00:00"
+        },
+        {
+            "from": 75,
+            "to": 88,
+            "label": "WENT_TO",
+            "start": "2020-03-02 00:00:00",
+            "end": "2020-03-08 00:00:00"
+        },
+        {
+            "from": 75,
+            "to": 89,
+            "label": "WENT_TO",
+            "start": "2020-03-01 00:00:00",
+            "end": "2020-03-05 00:00:00"
+        },
+        {
+            "from": 76,
+            "to": 87,
+            "label": "WENT_TO",
+            "start": "2020-02-21 00:00:00",
+            "end": "2020-02-23 00:00:00"
+        },
+        {
+            "from": 77,
+            "to": 80,
+            "label": "CLOSE_FRIEND"
+        },
+        {
+            "from": 77,
+            "to": 88,
+            "label": "WENT_TO",
+            "start": "2020-03-03 00:00:00",
+            "end": "2020-03-05 00:00:00"
+        },
+        {
+            "from": 77,
+            "to": 85,
+            "label": "WENT_TO",
+            "start": "2020-03-17 00:00:00",
+            "end": "2020-03-18 00:00:00"
+        },
+        {
+            "from": 78,
+            "to": 89,
+            "label": "WENT_TO",
+            "start": "2020-03-08 00:00:00",
+            "end": "2020-03-10 00:00:00"
+        },
+        {
+            "from": 79,
+            "to": 85,
+            "label": "WENT_TO",
+            "start": "2020-03-10 00:00:00",
+            "end": "2020-03-19 00:00:00"
+        },
+        {
+            "from": 80,
+            "to": 77,
+            "label": "CLOSE_FRIEND"
+        },
+        {
+            "from": 80,
+            "to": 86,
+            "label": "WENT_TO",
+            "start": "2020-03-07 00:00:00",
+            "end": "2020-03-10 00:00:00"
+        },
+        {
+            "from": 80,
+            "to": 85,
+            "label": "WENT_TO",
+            "start": "2020-03-16 00:00:00",
+            "end": "2020-03-19 00:00:00"
+        },
+        {
+            "from": 81,
+            "to": 84,
+            "label": "CLOSE_FRIEND"
+        },
+        {
+            "from": 82,
+            "to": 85,
+            "label": "WENT_TO",
+            "start": "2020-03-09 00:00:00",
+            "end": "2020-03-18 00:00:00"
+        },
+        {
+            "from": 83,
+            "to": 87,
+            "label": "WENT_TO",
+            "start": "2020-02-21 00:00:00",
+            "end": "2020-02-23 00:00:00"
+        },
+        {
+            "from": 84,
+            "to": 81,
+            "label": "CLOSE_FRIEND"
+        },
+        {
+            "from": 84,
+            "to": 85,
+            "label": "WENT_TO",
+            "start": "2020-03-17 00:00:00",
+            "end": "2020-03-19 00:00:00"
+        }
+    ]
+}

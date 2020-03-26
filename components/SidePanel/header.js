@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 
-import { getIcon } from '../../util/parse'
+import { getIcon, getIcon_json } from '../../util/parse'
 import { SearchInput } from '../UI/search-input'
 import { setSearchTerm } from '../Redux/actions'
 
@@ -56,12 +56,14 @@ function Header({ patient, setSearchTerm }) {
   return (
     <Container>
       <Title>
-        covid19india.org Tracker Live <Dot>&nbsp;&middot;&nbsp;</Dot> 2H ago
+        Covid19 TU Tracker Live <Dot>&nbsp;&middot;&nbsp;</Dot> 
       </Title>
       <SearchInput searchTerm={onSearch} />
       <PatientContainer>
-        <Image src={getIcon(patient)} />
-        <Name>P {patientId.toString().substring(2)}</Name>
+        <Image src={getIcon_json(patient)} />
+        {/* <Image src={getIcon(patient)} /> */}
+        <Name>P {patient.id}</Name>
+        {/* <Name>P {patientId.toString().substring(2)}</Name> */}
       </PatientContainer>
     </Container>
   )

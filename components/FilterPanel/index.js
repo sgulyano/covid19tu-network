@@ -17,8 +17,8 @@ import { updateGraph, selectFilter } from '../Redux/actions'
 
 const filters = [
   {
-    name: 'P2P',
-    icon: p2p,
+    name: 'Places',
+    icon: city,
     add: graph => {
       return graph
     },
@@ -26,9 +26,9 @@ const filters = [
       return graph
     },
   },
-  { name: 'State', icon: state, add: addStates, remove: removeStates },
-  { name: 'City', icon: city, add: addCities, remove: removeCities },
-  { name: 'Travel', icon: abroad, add: addTravel, remove: removeTravel },
+  // { name: 'State', icon: state, add: addStates, remove: removeStates },
+  // { name: 'City', icon: city, add: addCities, remove: removeCities },
+  // { name: 'Travel', icon: abroad, add: addTravel, remove: removeTravel },
 ]
 
 const HeaderContainer = styled.div`
@@ -104,7 +104,7 @@ const FilterPanel = ({
   // const [selected, selectCategory] = React.useState('P2P')
 
   const changeGraph = name => {
-    // console.log('Changegraph', graph, patients.byId)
+    console.log('Changegraph', graph, patients.byId, name)
     let currentFilter = _.find(filters, function(o) {
       return o.name === filter
     })
@@ -112,6 +112,7 @@ const FilterPanel = ({
       return o.name === name
     })
 
+    console.log(currentFilter)
     let newGraph = currentFilter.remove(graph, patients.byId)
 
     selectFilter(name)

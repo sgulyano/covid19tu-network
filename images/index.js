@@ -1,9 +1,17 @@
 import male_cured from './male/cured.png'
 import male_dead from './male/dead.png'
 import male_hosp from './male/hospitalized.png'
+import male_pui from './male/pui.png'
+import male_highrisk from './male/dead.png'
+import male_lowrisk from './male/hospitalized.png'
+import male_healthy from './male/cured.png'
 import female_cured from './female/cured.png'
 import female_dead from './female/dead.png'
 import female_hosp from './female/hospitalized.png'
+import female_pui from './female/pui.png'
+import female_highrisk from './female/dead.png'
+import female_lowrisk from './female/hospitalized.png'
+import female_healthy from './female/cured.png'
 
 import abroad from './filter/abroad.png'
 import state from './filter/state.png'
@@ -19,9 +27,17 @@ export {
   male_cured,
   male_dead,
   male_hosp,
+  male_pui,
+  male_highrisk,
+  male_lowrisk,
+  male_healthy,
   female_cured,
   female_dead,
   female_hosp,
+  female_pui,
+  female_lowrisk,
+  female_highrisk,
+  female_healthy,
   state,
   city,
   state_node,

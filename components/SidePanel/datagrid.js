@@ -45,47 +45,63 @@ function Cell({ name, children }) {
 
 export default function DataGrid(patient) {
   const {
-    notes,
-    gender,
-    ageEstimate,
-    state,
-    city,
-    district,
-    status,
-    reportedOn,
-    sources,
+    label,
+    group,
+    level,
+    sex,
+    age,
+    tel,
+    email,
+    addr,
+    job,
+    dep
   } = patient;
-
-  const genderInitCap = gender.charAt(0).toUpperCase() + gender.slice(1);
 
   return (
     <Container>
+      <Cell name="Name">{label}</Cell>
       <DoubleCell>
-        <Cell name="Gender">{gender ? genderInitCap : '-'}</Cell>
-        <Cell name="Age">{ageEstimate ? ageEstimate : '-'}</Cell>
+        <Cell name="Group">{group ? group : '-'}</Cell>
+        <Cell name="Level">{level ? level : '-'}</Cell>
       </DoubleCell>
       <DoubleCell>
-        <Cell name="State">{state ? state : '-'}</Cell>
-        <Cell name="District/City">{city ? city : district}</Cell>
+        <Cell name="Sex">{sex ? sex : '-'}</Cell>
+        <Cell name="Age">{age ? age : '-'}</Cell>
       </DoubleCell>
-      <Cell name="Status">{status}</Cell>
-      <Cell name="Reported On">{reportedOn}</Cell>
-      <Cell name="Notes">{notes}</Cell>
-      <Cell name="Sources">
-        {sources
-          ? sources.map((source, i) => (
-              <div>
-                <div style={{ display: 'inline-block' }}>{i + 1}.&nbsp;</div>
-                <A href={source} target="_blank" rel="noopener noreferer">
-                  {_.truncate(source, {
-                    length: 40,
-                    separator: /,? +/,
-                  })}
-                </A>
-              </div>
-            ))
-          : null}
-      </Cell>
+      <Cell name="Address">{addr ? addr : '-'}</Cell>
+      <Cell name="Tel.">{tel ? tel : '-'}</Cell>
+      <Cell name="Email">{email ? email : '-'}</Cell>
+      <Cell name="Job">{job ? job : '-'}</Cell>
+      <Cell name="Department">{dep ? dep : '-'}</Cell>
     </Container>
   )
+  // const {
+  //   notes,
+  //   gender,
+  //   ageEstimate,
+  //   state,
+  //   city,
+  //   district,
+  //   status,
+  //   reportedOn,
+  //   sources,
+  // } = patient;
+
+  // const genderInitCap = gender.charAt(0).toUpperCase() + gender.slice(1);
+
+  // return (
+  //   <Container>
+  //     <DoubleCell>
+  //       <Cell name="Gender">{gender ? genderInitCap : '-'}</Cell>
+  //       <Cell name="Age">{ageEstimate ? ageEstimate : '-'}</Cell>
+  //     </DoubleCell>
+  //     <DoubleCell>
+  //       <Cell name="State">{state ? state : '-'}</Cell>
+  //       <Cell name="District/City">{city ? city : district}</Cell>
+  //     </DoubleCell>
+  //     <Cell name="Status">{status}</Cell>
+  //     <Cell name="Reported On">{reportedOn}</Cell>
+  //     <Cell name="Notes">{notes}</Cell>
+  //   </Container>
+  // )
 }

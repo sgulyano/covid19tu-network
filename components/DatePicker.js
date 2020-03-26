@@ -4,7 +4,7 @@ import DayPicker from 'react-day-picker'
 
 import { connect } from 'react-redux'
 import { updateGraph, selectFilter } from './Redux/actions'
-import { rowsToGraph } from '../util/parse'
+import { rowsToGraph, jsonToGraph } from '../util/parse'
 import { isBrowser } from 'react-device-detect'
 
 const Container = styled.div`
@@ -35,22 +35,33 @@ function DatePicker({ updateGraph, selectFilter }) {
     if (formatDate(selectedDay) !== newDate) {
       console.log(newDate)
       changeSelectedDay(date)
-
+      
       const apiURL =
         'https://api.rootnet.in/covid19-in/unofficial/covid19india.org/patientdb/' +
         newDate
 
-      fetch(apiURL, {
-        cors: 'no-cors',
-        method: 'GET',
-        redirect: 'follow',
-      })
+      fetch('aa.json')
         .then(resp => resp.json())
         .then(res => {
           console.log(res)
-          updateGraph(rowsToGraph(res.data.rawPatientData))
-          selectFilter('P2P')
+          updateGraph(jsonToGraph(res.nodes, res.edges))
+          selectFilter('Places')
         })
+      // const apiURL =
+      //   'https://api.rootnet.in/covid19-in/unofficial/covid19india.org/patientdb/' +
+      //   newDate
+
+      // fetch(apiURL, {
+      //   cors: 'no-cors',
+      //   method: 'GET',
+      //   redirect: 'follow',
+      // })
+      //   .then(resp => resp.json())
+      //   .then(res => {
+      //     console.log(res)
+      //     updateGraph(rowsToGraph(res.data.rawPatientData))
+      //     selectFilter('P2P')
+      //   })
     }
   }
 
