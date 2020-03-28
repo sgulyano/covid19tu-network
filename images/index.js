@@ -1,17 +1,23 @@
 import male_cured from './male/cured.png'
 import male_dead from './male/dead.png'
 import male_hosp from './male/hospitalized.png'
-import male_pui from './male/pui.png'
-import male_highrisk from './male/dead.png'
-import male_lowrisk from './male/hospitalized.png'
-import male_healthy from './male/cured.png'
+import male_purple from './male/pui.png'
+import male_red from './male/dead.png'
+import male_orange from './male/hospitalized.png'
+import male_green from './male/cured.png'
+import male_yellow from './male/yellow.png'
+import male_blue from './male/blue.png'
+import male_none from './male/man.png'
 import female_cured from './female/cured.png'
 import female_dead from './female/dead.png'
 import female_hosp from './female/hospitalized.png'
-import female_pui from './female/pui.png'
-import female_highrisk from './female/dead.png'
-import female_lowrisk from './female/hospitalized.png'
-import female_healthy from './female/cured.png'
+import female_purple from './female/pui.png'
+import female_red from './female/dead.png'
+import female_orange from './female/hospitalized.png'
+import female_green from './female/cured.png'
+import female_yellow from './female/yellow.png'
+import female_blue from './female/blue.png'
+import female_none from './female/woman.png'
 
 import abroad from './filter/abroad.png'
 import state from './filter/state.png'
@@ -24,20 +30,20 @@ import plane_abroad_node from './nodes/plane.png'
 import plane_local_node from './nodes/plane_local.png'
 
 export {
-  male_cured,
-  male_dead,
-  male_hosp,
-  male_pui,
-  male_highrisk,
-  male_lowrisk,
-  male_healthy,
-  female_cured,
-  female_dead,
-  female_hosp,
-  female_pui,
-  female_lowrisk,
-  female_highrisk,
-  female_healthy,
+  male_purple,
+  male_red,
+  male_orange,
+  male_green,
+  male_yellow,
+  male_blue,
+  male_none,
+  female_purple,
+  female_red,
+  female_orange,
+  female_green,
+  female_yellow,
+  female_blue,
+  female_none,
   state,
   city,
   state_node,

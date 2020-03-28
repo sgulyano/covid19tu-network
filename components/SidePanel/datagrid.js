@@ -45,34 +45,43 @@ function Cell({ name, children }) {
 
 export default function DataGrid(patient) {
   const {
-    label,
     group,
-    level,
-    sex,
+    color,
+    type,
     age,
-    tel,
-    email,
-    addr,
-    job,
-    dep
+    org,
+    emptype,
+    gender,
+    blood,
+    ismedstaff,
+    bloodres,
+    province,
   } = patient;
 
   return (
     <Container>
-      <Cell name="Name">{label}</Cell>
       <DoubleCell>
         <Cell name="Group">{group ? group : '-'}</Cell>
-        <Cell name="Level">{level ? level : '-'}</Cell>
+        <Cell name="Color">{color ? color : '-'}</Cell>
       </DoubleCell>
       <DoubleCell>
-        <Cell name="Sex">{sex ? sex : '-'}</Cell>
+        <Cell name="Sex">{gender ? gender : '-'}</Cell>
         <Cell name="Age">{age ? age : '-'}</Cell>
       </DoubleCell>
-      <Cell name="Address">{addr ? addr : '-'}</Cell>
-      <Cell name="Tel.">{tel ? tel : '-'}</Cell>
-      <Cell name="Email">{email ? email : '-'}</Cell>
-      <Cell name="Job">{job ? job : '-'}</Cell>
-      <Cell name="Department">{dep ? dep : '-'}</Cell>
+      <DoubleCell>
+        <Cell name="Blood">{blood ? blood : '-'}</Cell>
+        <Cell name="Blood Result">{bloodres ? bloodres : '-'}</Cell>
+      </DoubleCell>
+      <DoubleCell>
+        <Cell name="Medical Personnel‎">{ismedstaff ? 'เป็น' : 'ไม่เป็น'}</Cell>
+        <Cell name="Province">{province ? province : '-'}</Cell>
+      </DoubleCell>
+      <DoubleCell>
+        <Cell name="Job">{type? type : '-'}</Cell>
+        <Cell name="Position">{emptype ? emptype : '-'}</Cell>
+      </DoubleCell>
+      <Cell name="Department">{org ? org : '-'}</Cell>
+      
     </Container>
   )
   // const {

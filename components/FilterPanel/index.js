@@ -137,6 +137,7 @@ const FilterPanel = ({
       <FilterMenuContainer>
         {filters.map(filterItem => (
           <FilterCategory
+            key={filterItem.name}
             filter={filterItem}
             onClick={() => changeGraph(filterItem.name)}
             selected={filter === filterItem.name ? true : false}

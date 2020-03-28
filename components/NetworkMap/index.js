@@ -24,7 +24,7 @@ const NetworkMap = ({
   }))
 
   useEffect(() => {
-    fetch('aa.json')
+    fetch('cc.json')
       .then(resp => resp.json())
       .then(res => {
         // console.log(res)

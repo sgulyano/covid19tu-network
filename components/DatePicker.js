@@ -40,7 +40,7 @@ function DatePicker({ updateGraph, selectFilter }) {
         'https://api.rootnet.in/covid19-in/unofficial/covid19india.org/patientdb/' +
         newDate
 
-      fetch('aa.json')
+      fetch('cc.json')
         .then(resp => resp.json())
         .then(res => {
           console.log(res)

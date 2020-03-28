@@ -1,11 +1,12 @@
 {
-  "name": "covid19india-network",
+  "name": "covid19tu-network",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "production": "next build && next start"
   },
   "dependencies": {
     "dot-prop-immutable": "^2.1.0",

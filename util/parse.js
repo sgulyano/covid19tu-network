@@ -57,21 +57,21 @@
 //     }
 
 import {
-  male_hosp,
-  male_cured,
-  male_dead,
-  male_pui,
-  male_highrisk,
-  male_lowrisk,
-  male_healthy,
+  male_purple,
+  male_red,
+  male_orange,
+  male_green,
+  male_yellow,
+  male_blue,
+  male_none,
+  female_purple,
+  female_red,
+  female_orange,
+  female_green,
+  female_yellow,
+  female_blue,
+  female_none,
   city_node,
-  female_cured,
-  female_hosp,
-  female_dead,
-  female_pui,
-  female_lowrisk,
-  female_highrisk,
-  female_healthy,
 } from '../images/index'
 import dotProp from 'dot-prop-immutable'
 
@@ -81,30 +81,42 @@ export function letterToCode(str) {
 }
 
 export function getIcon_json(patient) {
-  if (typeof patient.sex !== 'undefined' && patient.sex.charAt(0)=='\u0e0a') {
-    if (patient.level === 'PUI') {
-      return male_pui
-    } else if (patient.level === 'HighRisk') {
-      return male_highrisk
-    } else if (patient.level === 'LowRisk') {
-      return male_lowrisk
-    } else if (patient.level === 'Healthy') {
-      return male_healthy
+  if (patient.gr != 'Person') {
+    if (patient.gender === 'ชาย') {
+      if (patient.color === 'สีม่วง') {
+        return male_purple
+      } else if (patient.color === 'สีแดง') {
+        return male_red
+      } else if (patient.color === 'สีส้ม') {
+        return male_orange
+      } else if (patient.color === 'สีน้ำเงิน') {
+        return male_blue
+      } else if (patient.color === 'สีเหลือง') {
+        return male_yellow
+      } else if (patient.color === 'สีเขียว') {
+        return male_green
+      } else {
+        return male_none
+      }
     } else {
-      return city_node
+      if (patient.color === 'สีม่วง') {
+        return female_purple
+      } else if (patient.color === 'สีแดง') {
+        return female_red
+      } else if (patient.color === 'สีส้ม') {
+        return female_orange
+      } else if (patient.color === 'สีน้ำเงิน') {
+        return female_blue
+      } else if (patient.color === 'สีเหลือง') {
+        return female_yellow
+      } else if (patient.color === 'สีเขียว') {
+        return female_green
+      } else {
+        return female_none
+      }
     }
   } else {
-    if (patient.level === 'PUI') {
-      return female_pui
-    } else if (patient.level === 'HighRisk') {
-      return female_highrisk
-    } else if (patient.level === 'LowRisk') {
-      return female_lowrisk
-    } else if (patient.level === 'Healthy') {
-      return female_healthy
-    } else {
-      return city_node
-    }
+    return city_node
   }
 }
 
@@ -186,14 +198,16 @@ export const jsonToGraph = (nodes, edges) => {
       shape: 'image',
       image: getIcon_json(row),
       group: row.group,
-      level: row.level,
-      sex: row.sex,
+      color: row.color,
+      type: row.type,
       age: row.age,
-      tel: row.tel,
-      email: row.email,
-      addr: row.addr,
-      job: row.job,
-      dep: row.dep
+      org: row.org,
+      emptype: row.emptype,
+      gender: row.gender,
+      blood: row.blood,
+      ismedstaff: row.ismedstaff,
+      bloodres: row.bloodres,
+      province: row.province
     }
 
     graph = dotProp.set(graph, 'nodes', list => [...list, node])
