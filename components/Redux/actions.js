@@ -35,6 +35,15 @@ const selectPatient = patient => (dispatch, getState) => {
   })
 }
 
+const selectEdge = edge => (dispatch, getState) => {
+  // Dispatch the result.
+  dispatch({
+    type: actionTypes.SELECT_EDGE,
+    payload: edge,
+  })
+}
+
+
 const selectFilter = filter => (dispatch, getState) => {
   // Dispatch the result.
   dispatch({
@@ -55,4 +64,4 @@ const setSearchTerm = term => (dispatch, getState) => {
 }
 
 // Export the actions.
-export { updateGraph, updatePatients, selectPatient, selectFilter, setSearchTerm }
+export { updateGraph, updatePatients, selectPatient, selectEdge, selectFilter, setSearchTerm }

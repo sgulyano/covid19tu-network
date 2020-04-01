@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Graph from 'react-graph-vis'
 import { connect, useSelector } from 'react-redux'
-import { updateGraph, updatePatients, selectPatient } from '../Redux/actions'
+import { updateGraph, updatePatients, selectPatient, selectEdge } from '../Redux/actions'
 
 import { rowsToGraph, letterToCode, jsonToGraph } from '../../util/parse'
 import normalize from '../../util/normalize'
@@ -12,6 +12,7 @@ const NetworkMap = ({
   updateGraph,
   updatePatients,
   selectPatient,
+  selectEdge,
   height,
   width,
 }) => {
@@ -24,7 +25,7 @@ const NetworkMap = ({
   }))
 
   useEffect(() => {
-    fetch('cc.json')
+    fetch('result2020-04-01.json')
       .then(resp => resp.json())
       .then(res => {
         // console.log(res)
@@ -109,6 +110,12 @@ const NetworkMap = ({
             break
           default:
         }
+      } else {
+        const selectedEdgeId = event.edges[0]
+        const selectedEdge = graph.edges.find(v => v.id === selectedEdgeId)
+        if (selectedEdge) {
+          selectEdge({ selectedge: selectedEdge, coords: event.pointer.canvas })
+        }
       }
     },
   }
@@ -134,4 +141,5 @@ export default connect(mapStateToProps, {
   updateGraph,
   updatePatients,
   selectPatient,
+  selectEdge,
 })(NetworkMap)

@@ -43,7 +43,15 @@ export default (state = initialState, action) => {
         ...patients.byId[id],
         coords
       }
-      return existingPatient ? { ...state, patient } : state
+      return existingPatient ? { ...state, patient, selected:'NODE' } : state
+    }
+    case actionTypes.SELECT_EDGE: {
+      const { selectedge, coords } = action.payload
+      const edge = {
+        selectedge,
+        coords
+      }
+      return edge ? { ...state, edge, selected:'EDGE' } : state
     }
     default:
       return state

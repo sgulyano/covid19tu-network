@@ -43,66 +43,20 @@ function Cell({ name, children }) {
   )
 }
 
-export default function DataGrid(patient) {
+export default function EdgeDataGrid(edge) {
   const {
-    label,
-    group,
-    color,
-    type,
-    age,
-    org,
-    emptype,
-    gender,
-    blood,
-    ismedstaff,
-    bloodres,
-    province,
-    lon,
-    lat,
-    addr,
-  } = patient;
+    start,
+    end,
+  } = edge;
 
-  if (group == 'Person') {
+  
   return (
     <Container>
-      <DoubleCell>
-        <Cell name="Group">{group ? group : '-'}</Cell>
-        <Cell name="Color">{color ? color : '-'}</Cell>
-      </DoubleCell>
-      <DoubleCell>
-        <Cell name="Sex">{gender ? gender : '-'}</Cell>
-        <Cell name="Age">{age ? age : '-'}</Cell>
-      </DoubleCell>
-      <DoubleCell>
-        <Cell name="Blood">{blood ? blood : '-'}</Cell>
-        <Cell name="Blood Result">{bloodres ? bloodres : '-'}</Cell>
-      </DoubleCell>
-      <DoubleCell>
-        <Cell name="Medical Personnel‎">{ismedstaff ? 'เป็น' : 'ไม่เป็น'}</Cell>
-        <Cell name="Province">{province ? province : '-'}</Cell>
-      </DoubleCell>
-      <DoubleCell>
-        <Cell name="Job">{type? type : '-'}</Cell>
-        <Cell name="Position">{emptype ? emptype : '-'}</Cell>
-      </DoubleCell>
-      <Cell name="Department">{org ? org : '-'}</Cell>
-      
+      <Cell name="Start At">{start ? start : '-'}</Cell>
+      <Cell name="End At">{end ? end : '-'}</Cell>
     </Container>
   )
-  } else if (group == 'Location') {
-    return (
-      <Container>
-        <Cell name="Name">{label ? label : '-'}</Cell>
-        <DoubleCell>
-          <Cell name="Latitude">{lat ? lat : '-'}</Cell>
-          <Cell name="Longitude">{lon ? lon : '-'}</Cell>
-        </DoubleCell>
-      </Container>
-    )
-  } else {
-    console.error('Unknown Group');
-    return null
-  }
+  
   // const {
   //   notes,
   //   gender,

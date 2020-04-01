@@ -81,7 +81,7 @@ export function letterToCode(str) {
 }
 
 export function getIcon_json(patient) {
-  if (patient.gr != 'Person') {
+  if (patient.group === 'Person') {
     if (patient.gender === 'ชาย') {
       if (patient.color === 'สีม่วง') {
         return male_purple
@@ -192,27 +192,42 @@ export const jsonToGraph = (nodes, edges) => {
   }
 
   nodes.forEach(row => {
-    let node = {
-      id: row.id,
-      label: row.label,
-      shape: 'image',
-      image: getIcon_json(row),
-      group: row.group,
-      color: row.color,
-      type: row.type,
-      age: row.age,
-      org: row.org,
-      emptype: row.emptype,
-      gender: row.gender,
-      blood: row.blood,
-      ismedstaff: row.ismedstaff,
-      bloodres: row.bloodres,
-      province: row.province
+    if (row.group == 'Person') {
+      let node = {
+        id: row.id,
+        label: row.label.toString(),
+        shape: 'image',
+        image: getIcon_json(row),
+        group: row.group,
+        color: row.color,
+        type: row.type,
+        age: row.age,
+        org: row.org,
+        emptype: row.emptype,
+        gender: row.gender,
+        blood: row.blood,
+        ismedstaff: row.ismedstaff,
+        bloodres: row.bloodres,
+        province: row.province
+      }
+      graph = dotProp.set(graph, 'nodes', list => [...list, node])
+    } else if (row.group == 'Location') {
+      let node = {
+        id: row.id,
+        label: row.label,
+        shape: 'image',
+        image: getIcon_json(row),
+        group: row.group,
+        lon: row.lon,
+        lat: row.lat,
+      }
+      graph = dotProp.set(graph, 'nodes', list => [...list, node])
+    } else {
+      console.error('Unknown group');
     }
-
-    graph = dotProp.set(graph, 'nodes', list => [...list, node])
+    
   })
-
+  
   edges.forEach(row => {
     let edge = {
       from: row.from,
