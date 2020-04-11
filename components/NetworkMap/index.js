@@ -25,10 +25,10 @@ const NetworkMap = ({
   }))
 
   useEffect(() => {
-    fetch('result2020-04-01.json')
+    fetch('http://localhost:5000/api/v1/getgraph/')
       .then(resp => resp.json())
       .then(res => {
-        // console.log(res)
+        console.log(res)
         updateGraph(jsonToGraph(res.nodes, res.edges))
         updatePatients(normalize(res.nodes))
         setIsLoading(false)
