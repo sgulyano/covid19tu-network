@@ -25,11 +25,11 @@ const NetworkMap = ({
   }))
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/v1/getgraph/')
+    fetch('result.json')
       .then(resp => resp.json())
       .then(res => {
-        console.log(res)
-        updateGraph(jsonToGraph(res.nodes, res.edges))
+        // console.log(res)
+        updateGraph(jsonToGraph(res.nodes, res.edges, res.timestamp))
         updatePatients(normalize(res.nodes))
         setIsLoading(false)
       })
@@ -104,6 +104,7 @@ const NetworkMap = ({
         switch (selectedNode.group) {
           case 'Person':
           case 'Location':
+          case 'Province':
             // As per the vis.js API, event.pointer.canvas points to the selected node within the canvas
             // which in our case is the patient. Inject this into the update logic.
             selectPatient({ id: selectedNode.id, coords: event.pointer.canvas })

@@ -13,18 +13,18 @@ const Container = styled.div`
   overflow: auto;
 `
 
-const SidePanel = ({ patient, edge, selected }) => {
+const SidePanel = ({ graph, patient, edge, selected }) => {
   if (selected === 'NODE') {
     return (
       <Container>
-        {patient ? <Header patient={patient} /> : null}
+        {patient ? <Header patient={patient} graph = {graph}/> : null}
         {patient ? <DataGrid {...patient} /> : null}
       </Container>
     )
   } else if (selected === 'EDGE') {
     return (
       <Container>
-        {edge ? <EdgeHeader edge={edge} /> : null}
+        {edge ? <EdgeHeader edge={edge} graph = {graph} /> : null}
         {edge ? <EdgeDataGrid {...edge} /> : null}
       </Container>
     )
@@ -34,8 +34,8 @@ const SidePanel = ({ patient, edge, selected }) => {
 }
 
 const mapStateToProps = state => {
-  const { patient, edge, selected } = state
-  return { patient, edge, selected }
+  const { graph, patient, edge, selected } = state
+  return { graph, patient, edge, selected }
 }
 
 export default connect(mapStateToProps, null)(SidePanel)

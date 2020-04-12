@@ -40,11 +40,11 @@ function DatePicker({ updateGraph, selectFilter }) {
         'https://api.rootnet.in/covid19-in/unofficial/covid19india.org/patientdb/' +
         newDate
 
-      fetch('http://localhost:5000/api/v1/getgraph/')
+      fetch('result.json')
         .then(resp => resp.json())
         .then(res => {
-          console.log(res)
-          updateGraph(jsonToGraph(res.nodes, res.edges))
+          // console.log(res)
+          updateGraph(jsonToGraph(res.nodes, res.edges, res.timestamp))
           selectFilter('Places')
         })
       // const apiURL =

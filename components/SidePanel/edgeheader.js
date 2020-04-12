@@ -39,18 +39,20 @@ const Name = styled.div`
   font-size: 40px;
 `
 
-function EdgeHeader({ edge }) {
+function EdgeHeader({ edge, graph, setSearchTerm }) {
 
   const onSearch = (term) => {
     setSearchTerm(term)
   }
 
-  const {selectedge} = edge
+  const { selectedge } = edge
+  const { timestamp } = graph
   
   return (
     <Container>
       <Title>
-        Covid19 TU Tracker Live <Dot>&nbsp;&middot;&nbsp;</Dot> 
+        Covid19 TU Tracker <br/>
+        Updated at <Dot>&nbsp;&middot;&nbsp;</Dot> {timestamp} <Dot>&nbsp;&middot;&nbsp;</Dot>
       </Title>
       <SearchInput searchTerm={onSearch} />
       <PatientContainer>

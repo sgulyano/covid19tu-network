@@ -6,6 +6,8 @@ import _ from 'lodash'
 
 import { state, city, abroad, p2p } from '../../images/index'
 import {
+  addProvinces,
+  removeProvinces,
   addStates,
   removeStates,
   addCities,
@@ -26,6 +28,7 @@ const filters = [
       return graph
     },
   },
+  { name: 'Province', icon: state, add: addProvinces, remove: removeProvinces },
   // { name: 'State', icon: state, add: addStates, remove: removeStates },
   // { name: 'City', icon: city, add: addCities, remove: removeCities },
   // { name: 'Travel', icon: abroad, add: addTravel, remove: removeTravel },
@@ -104,7 +107,7 @@ const FilterPanel = ({
   // const [selected, selectCategory] = React.useState('P2P')
 
   const changeGraph = name => {
-    console.log('Changegraph', graph, patients.byId, name)
+    // console.log('Changegraph', graph, patients.byId, name)
     let currentFilter = _.find(filters, function(o) {
       return o.name === filter
     })
@@ -112,12 +115,12 @@ const FilterPanel = ({
       return o.name === name
     })
 
-    console.log(currentFilter)
+    // console.log(currentFilter)
     let newGraph = currentFilter.remove(graph, patients.byId)
 
     selectFilter(name)
     newGraph = choosenFilter.add(newGraph, patients.byId)
-    console.log(newGraph)
+    // console.log(newGraph)
     updateGraph(newGraph)
   }
   const FilterHeader = styled.div`

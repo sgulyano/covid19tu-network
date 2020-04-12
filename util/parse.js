@@ -185,10 +185,11 @@ export const rowsToGraph = rows => {
   return graph
 }
 
-export const jsonToGraph = (nodes, edges) => {
+export const jsonToGraph = (nodes, edges, timestamp) => {
   let graph = {
     nodes: [],
     edges: [],
+    timestamp: ''
   }
 
   nodes.forEach(row => {
@@ -239,6 +240,8 @@ export const jsonToGraph = (nodes, edges) => {
 
     graph = dotProp.set(graph, 'edges', list => [...list, edge])
   })
+
+  graph = dotProp.set(graph, 'timestamp', timestamp)
   return graph
 }
 

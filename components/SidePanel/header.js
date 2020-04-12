@@ -45,24 +45,26 @@ const Name = styled.div`
   font-size: 40px;
 `
 
-function Header({ patient, setSearchTerm }) {
+function Header({ patient, graph, setSearchTerm }) {
 
   const onSearch = (term) => {
     setSearchTerm(term)
   }
 
-  const { patientId } = patient
-
+  const { id } = patient
+  const { timestamp } = graph
+  
   return (
     <Container>
       <Title>
-        Covid19 TU Tracker Live <Dot>&nbsp;&middot;&nbsp;</Dot> 
+        Covid19 TU Tracker <br/>
+        Updated at <Dot>&nbsp;&middot;&nbsp;</Dot> {timestamp} <Dot>&nbsp;&middot;&nbsp;</Dot>
       </Title>
       <SearchInput searchTerm={onSearch} />
       <PatientContainer>
         <Image src={getIcon_json(patient)} />
         {/* <Image src={getIcon(patient)} /> */}
-        <Name>P {patient.id}</Name>
+        <Name>P {id}</Name>
         {/* <Name>P {patientId.toString().substring(2)}</Name> */}
       </PatientContainer>
     </Container>
