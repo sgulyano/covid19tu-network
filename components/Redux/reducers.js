@@ -9,6 +9,7 @@ import actionTypes from './actionTypes'
 
 // Setup initial state with an fleet info object.
 const initialState = {
+  api: 'result.json',
   filter: 'Places',
   selected: null,
   graph: null,
@@ -30,6 +31,10 @@ export default (state = initialState, action) => {
     case actionTypes.UPDATE_GRAPH: {
       const { graph } = action.payload
       return { ...state, graph: graph }
+    }
+    case actionTypes.CHANGE_API: {
+      const { api } = action.payload
+      return { ...state, api: api }
     }
     case actionTypes.UPDATE_PATIENTS: {
       const { patients } = action.payload

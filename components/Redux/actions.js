@@ -17,6 +17,16 @@ const updateGraph = graph => (dispatch, getState) => {
   })
 }
 
+const changeAPI = api => (dispatch, getState) => {
+  // Dispatch the result.
+  dispatch({
+    type: actionTypes.CHANGE_API,
+    payload: {
+      api: api,
+    },
+  })
+}
+
 const updatePatients = patients => (dispatch, getState) => {
   // Dispatch the result.
   dispatch({
@@ -64,4 +74,4 @@ const setSearchTerm = term => (dispatch, getState) => {
 }
 
 // Export the actions.
-export { updateGraph, updatePatients, selectPatient, selectEdge, selectFilter, setSearchTerm }
+export { updateGraph, changeAPI, updatePatients, selectPatient, selectEdge, selectFilter, setSearchTerm }

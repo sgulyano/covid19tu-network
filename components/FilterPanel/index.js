@@ -15,7 +15,7 @@ import {
   addTravel,
   removeTravel,
 } from '../../util/filters'
-import { updateGraph, selectFilter } from '../Redux/actions'
+import { updateGraph, changeAPI, selectFilter } from '../Redux/actions'
 
 const filters = [
   {
@@ -29,6 +29,16 @@ const filters = [
     },
   },
   { name: 'Province', icon: state, add: addProvinces, remove: removeProvinces },
+  {
+    name: 'High Risk',
+    icon: p2p,
+    add: graph => {
+      return graph
+    },
+    remove: graph => {
+      return graph
+    },
+  },
   // { name: 'State', icon: state, add: addStates, remove: removeStates },
   // { name: 'City', icon: city, add: addCities, remove: removeCities },
   // { name: 'Travel', icon: abroad, add: addTravel, remove: removeTravel },
@@ -101,6 +111,7 @@ const FilterPanel = ({
   graph,
   patients,
   updateGraph,
+  changeAPI,
   selectFilter,
   filter,
 }) => {
@@ -119,6 +130,11 @@ const FilterPanel = ({
     let newGraph = currentFilter.remove(graph, patients.byId)
 
     selectFilter(name)
+    if (name == 'Places') {
+      changeAPI('result.json')
+    } else if (name == 'High Risk') {
+      changeAPI('result_filter.json')
+    }
     newGraph = choosenFilter.add(newGraph, patients.byId)
     // console.log(newGraph)
     updateGraph(newGraph)
@@ -156,6 +172,6 @@ const mapStateToProps = state => {
   return { graph, patients, filter }
 }
 
-export default connect(mapStateToProps, { updateGraph, selectFilter })(
+export default connect(mapStateToProps, { updateGraph, changeAPI, selectFilter })(
   FilterPanel
 )

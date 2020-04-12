@@ -8,6 +8,7 @@ import normalize from '../../util/normalize'
 import DatePicker from '../DatePicker'
 
 const NetworkMap = ({
+  api,
   graph,
   updateGraph,
   updatePatients,
@@ -25,7 +26,7 @@ const NetworkMap = ({
   }))
 
   useEffect(() => {
-    fetch('result.json')
+    fetch(api)
       .then(resp => resp.json())
       .then(res => {
         // console.log(res)
@@ -46,11 +47,11 @@ const NetworkMap = ({
     //     setIsLoading(false)
     //   })
       .catch(err => console.log('error', err))
-  }, [isLoading])
+  }, [isLoading, api])
 
   useEffect(() => {
     // TODO: Figure out a way to make this do-able with patient Id search
-    if (graphRef.current && selected.coords) { // Make sure the ref is ready
+    if (graphRef.current && selected && selected.coords) { // Make sure the ref is ready
       const moveParams = {
         position: selected.coords,
         scale: 1.5,
@@ -126,7 +127,7 @@ const NetworkMap = ({
       {isLoading ? null : (
         <>
           <Graph ref={graphRef} graph={graph} options={options} events={events} />
-          <DatePicker />
+          {/* <DatePicker /> */}
         </>
       )}
     </div>
@@ -134,8 +135,8 @@ const NetworkMap = ({
 }
 
 const mapStateToProps = state => {
-  let { graph, searchTerm } = state
-  return { graph, searchTerm }
+  let { api, graph, searchTerm } = state
+  return { api, graph, searchTerm }
 }
 
 export default connect(mapStateToProps, {
